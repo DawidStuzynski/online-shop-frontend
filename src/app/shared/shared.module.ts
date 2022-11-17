@@ -6,8 +6,6 @@ import {SidebarComponent} from "./components/sidebar/sidebar.component";
 import {RouterModule} from "@angular/router";
 import {FlexModule} from "@angular/flex-layout";
 import {MaterialModule} from "./material.module";
-import {MatListModule} from "@angular/material/list";
-
 
 
 @NgModule({
@@ -20,13 +18,13 @@ import {MatListModule} from "@angular/material/list";
     CommonModule,
     RouterModule,
     FlexModule,
-    MaterialModule,
-    MatListModule
+    MaterialModule
   ],
   exports: [
     FooterComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    MaterialModule
   ]
 })
 export class SharedModule {
