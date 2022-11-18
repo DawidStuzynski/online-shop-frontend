@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-product',
@@ -7,7 +7,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
-  constructor() { }
+  products = [
+    {
+      name: "Product 1",
+      category: "Category 1",
+      description: "Product description",
+      price: 11.99,
+      currency: "PLN"
+    },
+    {
+      name: "Product 1",
+      category: "Category 1",
+      description: "Product description",
+      price: 11.99,
+      currency: "PLN"
+    },
+    {
+      name: "Product 1",
+      category: "Category 1",
+      description: "Product description",
+      price: 11.99,
+      currency: "PLN"
+    }
+  ]
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
