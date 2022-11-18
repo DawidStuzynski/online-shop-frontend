@@ -13,6 +13,6 @@ export class ProductService {
 
   getProducts(): Observable<Product[]> {
 
-    return this.http.get<Product[]>("http://localhost:8080/products")
+    return this.http.get<Product[]>("/api/products")
   }
 }
