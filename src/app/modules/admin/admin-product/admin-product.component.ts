@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AdminProduct} from "./adminProduct";
 
 @Component({
   selector: 'app-admin-product',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminProductComponent implements OnInit {
 
-  constructor() { }
+  dataSource: AdminProduct[] = [];
+  displayedColumns: string[] = ["id", "name", "price"];
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
