@@ -6,13 +6,15 @@ import {RouterModule} from "@angular/router";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {AdminProductComponent} from "../../modules/admin/admin-product/admin-product.component";
 import {MaterialModule} from "../../shared/material.module";
+import {AdminProductUpdateComponent} from "../../modules/admin/admin-product-update/admin-product-update.component";
 
 
 @NgModule({
   declarations: [
     FullpageadminComponent,
     AdminComponent,
-    AdminProductComponent
+    AdminProductComponent,
+    AdminProductUpdateComponent
   ],
   imports: [
     CommonModule,
