@@ -27,7 +27,7 @@ import {FormGroup} from "@angular/forms";
       </mat-form-field>
 
       <div fxFlexAlign="end">
-        <button mat-flat-button color="primary">Save</button>
+        <button mat-flat-button color="primary" [disabled]="!parentForm.valid">Save</button>
       </div>
     </div>
   `

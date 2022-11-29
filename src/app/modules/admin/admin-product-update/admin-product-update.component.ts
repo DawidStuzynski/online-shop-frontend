@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {AdminProductUpdate} from "./model/adminProductUpdate";
 import {AdminProductUpdateService} from "./admin-product-update.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AdminMessageService} from "../admin-message.service";
 
@@ -29,11 +29,11 @@ export class AdminProductUpdateComponent implements OnInit {
     this.getProduct();
 
     this.productForm = this.formBuilder.group({
-      name: [''],
-      description: [''],
-      category: [''],
-      price: [''],
-      currency: ['PLN']
+      name: ['', [Validators.required, Validators.minLength(4)]],
+      description: ['', [Validators.required, Validators.minLength(4)]],
+      category: ['', [Validators.required, Validators.minLength(4)]],
+      price: ['', [Validators.required, Validators.minLength(4)]],
+      currency: ['PLN', Validators.required]
     });
   }
 
