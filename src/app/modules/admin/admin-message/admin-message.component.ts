@@ -9,13 +9,20 @@ import {AdminMessageService} from "../admin-message.service";
 export class AdminMessageComponent implements OnInit, OnDestroy {
 
   messages: Array<string> = [];
+  private clickCounter: number = 0;
 
   constructor(private adminMessageService: AdminMessageService) {
 
   }
 
   ngOnInit(): void {
-    this.adminMessageService.subject.subscribe(messages => this.messages = messages)
+    this.adminMessageService.subject.subscribe(messages => {
+        this.messages = messages
+        this.clickCounter++;
+        this.timeoutCloseMessages();
+      }
+    )
+
   }
 
   clearMessages() {
@@ -26,6 +33,15 @@ export class AdminMessageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.adminMessageService.subject.unsubscribe();
+  }
+
+  private timeoutCloseMessages() {
+    setTimeout(() => {
+      if (this.clickCounter == 1) {
+        this.clearMessages();
+      }
+      this.clickCounter--;
+    }, 5000);
   }
 
 }

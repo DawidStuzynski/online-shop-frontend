@@ -13,6 +13,7 @@ export class AdminMessageService {
   }
 
   add(message: string): void {
+    this.clear()
     this.messages.push(message);
     this.subject.next(this.messages);
 
@@ -23,8 +24,18 @@ export class AdminMessageService {
   }
 
   addSpringErrors(error: any): void {
-    for (let message of error.errors) {
-      this.messages.push("Field: " + message.field + " -> " + message.defaultMessage)
+    this.clear();
+    this.extractMessages(error);
+    this.subject.next(this.messages);
+  }
+
+  private extractMessages(error: any) {
+    if (error.errors?.length > 0) {
+      for (let message of error.errors) {
+        this.messages.push("Field: " + message.field + " -> " + message.defaultMessage)
+      }
+    } else {
+      this.messages.push(error.message)
     }
   }
 }
