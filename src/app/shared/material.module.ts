@@ -33,7 +33,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatPaginatorModule,
     MatTableModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule {
