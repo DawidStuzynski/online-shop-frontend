@@ -3,6 +3,7 @@ import {AdminProduct} from "./adminProduct";
 import {AdminProductService} from "./admin-product.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {map, startWith, switchMap} from "rxjs";
+import {AdminConfirmDialogService} from "../admin-confirm-dialog.service";
 
 @Component({
   selector: 'app-admin-product',
@@ -11,13 +12,15 @@ import {map, startWith, switchMap} from "rxjs";
 })
 export class AdminProductComponent implements AfterViewInit {
 
-  // dataSource: AdminProduct[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   displayedColumns: string[] = ["id", "name", "price", "actions"];
   totalElements: number = 0;
   data: AdminProduct[] = [];
 
-  constructor(private adminProductService: AdminProductService) {
+  constructor(
+    private adminProductService: AdminProductService,
+    private dialogService: AdminConfirmDialogService
+  ) {
   }
 
 
@@ -31,5 +34,10 @@ export class AdminProductComponent implements AfterViewInit {
       this.totalElements = data.totalElements;
       this.data = data.content
     })
+  }
+
+  confirmDelete(id: number) {
+    this.dialogService.openConfirmDialog();
+
   }
 }
