@@ -6,7 +6,10 @@
             <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
             <div fxLayout="row">
                 <a routerLink="{{'/products/'+product.slug}}">{{product.name}}
-                    <img src="/assets/image-placeholder.png" mat-card-lg-image class="productImage">
+                    <img *ngIf="!product?.image" src="/assets/image-placeholder.png" mat-card-lg-image
+                         class="productImage">
+                    <img *ngIf="product?.image" src="{{'/api/data/productImage/'+product?.image}}" mat-card-lg-image
+                         class="productImage">
                 </a>
                 <div fxFlex class="productContent">{{product.description}}</div>
             </div>
