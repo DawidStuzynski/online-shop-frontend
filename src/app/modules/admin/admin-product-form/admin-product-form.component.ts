@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+import { AdminCategoryNameDto } from './adminCategoryNameDto';
 
 
 @Component({
@@ -48,17 +49,20 @@ import { FormGroup } from "@angular/forms";
               </mat-form-field>
 
               <mat-form-field appearance="fill">
-                  <mat-label>Category</mat-label>
-                  <textarea matInput rows="20" placeholder="Enter product category"
-                            formControlName="category"></textarea>
-                  <div *ngIf="category?.invalid &&(category?.dirty||category?.touched)" class="errorMessages">
-                      <div *ngIf="category?.errors?.['required']">
-                          <p> Category is mandatory</p>
+                      <mat-label>Category</mat-label>
+                      <mat-select>
+                          <mat-option *ngFor="let category of categories" [value]="category.id">
+                              {{category.name }}
+                          </mat-option>
+                      </mat-select>
+                      <div *ngIf="category?.invalid &&(category?.dirty||category?.touched)" class="errorMessages">
+                          <div *ngIf="category?.errors?.['required']">
+                              <p> Category is mandatory</p>
+                          </div>
+                          <div *ngIf="category?.errors?.['minlength']">
+                              <p>Category must have min 4 letters</p>
+                          </div>
                       </div>
-                      <div *ngIf="category?.errors?.['minlength']">
-                          <p>Category must have min 4 letters</p>
-                      </div>
-                  </div>
               </mat-form-field>
 
               <mat-form-field appearance="fill">
@@ -98,6 +102,7 @@ import { FormGroup } from "@angular/forms";
 })
 export class AdminProductFormComponent implements OnInit {
   @Input() parentForm!: FormGroup;
+  categories: Array<AdminCategoryNameDto>=[];
 
   ngOnInit(): void {
 
